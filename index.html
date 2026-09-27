@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For My Favorite Human ♡</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #fff8fb;
+            color: #333;
+        }
+
+        /* ---------- HOME ---------- */
+
+        .home {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #fff1f6, #f8f2ff);
+        }
+
+        .home-content {
+            max-width: 700px;
+        }
+
+        .small {
+            font-size: 15px;
+            letter-spacing: 3px;
+            color: #9b7a91;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(45px, 9vw, 85px);
+            color: #4b3945;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #75636e;
+            margin-bottom: 35px;
+        }
+
+        .enter-btn {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background: #b58ca6;
+            padding: 14px 30px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .enter-btn:hover {
+            transform: translateY(-4px);
+            background: #967087;
+        }
+
+        /* ---------- GENERAL ---------- */
+
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 35px;
+            margin-bottom: 15px;
+            color: #4b3945;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #85747d;
+            margin-bottom: 45px;
+        }
+
+        /* ---------- ABOUT ---------- */
+
+        .about {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.9;
+            color: #62545c;
+            font-size: 17px;
+        }
+
+        .traits {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .trait {
+            background: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        /* ---------- PHOTOS ---------- */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 18px;
+            transition: 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03) rotate(1deg);
+        }
+
+        /* ---------- TIMELINE ---------- */
+
+        .timeline {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .timeline-item h3 {
+            color: #a47791;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item p {
+            color: #665861;
+            line-height: 1.7;
+        }
+
+        /* ---------- OPEN WHEN ---------- */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .card {
+            border: none;
+            background: white;
+            padding: 35px 20px;
+            border-radius: 20px;
+            font-size: 17px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        /* ---------- MESSAGE ---------- */
+
+        .message-box {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 45px;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 1.9;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+        }
+
+        /* ---------- FINAL ---------- */
+
+        .final {
+            min-height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #f8edf4, #eee8f8);
+        }
+
+        .final h2 {
+            font-size: 45px;
+            color: #4b3945;
+            margin-bottom: 20px;
+        }
+
+        .final p {
+            color: #6d5d66;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #927f89;
+            background: #fff8fb;
+        }
+
+        /* ---------- POPUP ---------- */
+
+        .popup {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            z-index: 10;
+        }
+
+        .popup-box {
+            background: white;
+            max-width: 450px;
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+        }
+
+        .popup-box h2 {
+            margin-bottom: 15px;
+            color: #8f6880;
+        }
+
+        .popup-box p {
+            line-height: 1.8;
+            color: #5f5359;
+        }
+
+        .close {
+            margin-top: 25px;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            background: #b58ca6;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* ---------- HEARTS ---------- */
+
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            animation: float 5s linear forwards;
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HOME -->
+
+    <section class="home" id="home">
+
+        <div class="home-content">
+
+            <p class="small">A VERY IMPORTANT WEBSITE</p>
+
+            <h1>Happy Birthday, Saaaaa♡</h1>
+
+            <p class="subtitle">
+                I could have just sent you a birthday text...
+                but apparently I chose violence and made a website 
+              because i have chosen web development course.
+            </p>
+
+            <a href="#about" class="enter-btn">
+                Enter your little corner of the internet →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <h2 class="section-title">
+            The person behind the chaos
+        </h2>
+
+        <p class="section-subtitle">
+            A completely unbiased description.
+        </p>
+
+        <div class="about">
+
+            <p>
+                She is a singer, dancer, vlogger, professional yapper,
+                stationery influencer and somehow manages to make everything
+                10 times more interesting.
+            </p>
+
+            <div class="traits">
+
+                <span class="trait">🎤 Singer</span>
+                <span class="trait">💃 Dancer</span>
+                <span class="trait">📱 Vlogger</span>
+                <span class="trait">🛍️ Stationery lover</span>
+                <span class="trait">💇 Hair obsessed</span>
+                <span class="trait">😂 Professional chaos</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PHOTOS -->
+
+    
+
+    <!-- TIMELINE -->
+
+    <section>
+
+        <h2 class="section-title">
+            Our extremely serious timeline
+        </h2>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <h3>Chapter 01 — Somehow we met</h3>
+
+                <p>
+                    And neither of us knew this person would eventually
+                    become such a permanent part of our everyday lives.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <h3>Chapter 02 — We became friends</h3>
+
+                <p>
+                    Somewhere along the way, talking went from occasionally
+                    to basically every day.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <h3>Chapter 03 — We know too much now</h3>
+
+                <p>
+                    At this point, there is no going back.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <h3>Chapter 04 — Still loading...</h3>
+
+                <p>
+                    More memories, more nonsense and probably
+                    approximately 7,000 more conversations.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- OPEN WHEN -->
+
+    <section>
+
+        <h2 class="section-title">
+            Open when... 💌
+        </h2>
+
+        <p class="section-subtitle">
+            Click responsibly.
+        </p>
+
+
+        <div class="cards">
+
+            <button class="card"
+                onclick="openMessage(
+                'you are bored',
+                'Congratulations. You have found the internet least productive birthday website. Go bother someone now. Preferably me.'
+                )">
+
+                💭<br><br>
+                You're bored
+
+            </button>
+
+
+            <button class="card"
+                onclick="openMessage(
+                'you need a laugh',
+                'Remember that we have enough embarrassing memories to destroy both our reputations. You are welcome.'
+                )">
+
+                😂<br><br>
+                You need a laugh
+
+            </button>
+
+
+            <button class="card"
+                onclick="openMessage(
+                'you need motivation',
+                'You have got this. Even if you temporarily forget that, I will remind you.'
+                )">
+
+                🌷<br><br>
+                You need motivation
+
+            </button>
+
+
+            <button class="card"
+                onclick="openMessage(
+                'you miss me',
+                'Well... I probably miss you too. Now stop being dramatic and text me.'
+                )">
+
+                🤍<br><br>
+                You miss me
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- MESSAGE -->
+
+    <section>
+
+        <h2 class="section-title">
+            A tiny message
+        </h2>
+
+        <div class="message-box">
+
+            <p>
+                Happy birthday to one of the most entertaining people
+                I somehow got lucky enough to have in my life.
+                <br><br>
+
+                I hope this year gives you a lot of reasons to laugh,
+                a lot of things to be proud of and plenty of memories
+                that we'll eventually look back at and laugh about.
+                <br><br>
+
+                Stay exactly as wonderfully chaotic as you are.
+                ♡
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+
+    <section class="final">
+
+        <div>
+
+            <h2>And that's it... 🎂</h2>
+
+            <p>
+                Your very own tiny corner of the internet.
+                <br><br>
+
+                Happy Birthday, Saaaaa ♡
+                <br>
+
+                — from your favourite person
+                <br><br>
+
+                <small>
+                    (Don't argue. It's written on a website, so it's legally true.)
+                </small>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        Made with questionable amounts of HTML, CSS & friendship ♡
+
+    </footer>
+
+
+    <!-- POPUP -->
+
+    <div class="popup" id="popup">
+
+        <div class="popup-box">
+
+            <h2 id="popupTitle"></h2>
+
+            <p id="popupText"></p>
+
+            <button class="close" onclick="closeMessage()">
+                Close ♡
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function openMessage(title, text) {
+
+            document.getElementById("popupTitle").innerText =
+                "Because you're " + title + "...";
+
+            document.getElementById("popupText").innerText = text;
+
+            document.getElementById("popup").style.display = "flex";
+
+        }
+
+
+        function closeMessage() {
+
+            document.getElementById("popup").style.display = "none";
+
+        }
+
+
+        /* Floating hearts */
+
+        setInterval(function () {
+
+            const heart = document.createElement("div");
+
+            heart.className = "heart";
+
+            heart.innerHTML = "♡";
+
+            heart.style.left = Math.random() * 100 + "vw";
+
+            heart.style.fontSize =
+                (15 + Math.random() * 20) + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(function () {
+
+                heart.remove();
+
+            }, 5000);
+
+        }, 900);
+
+    </script>
+
+</body>
+</html>
